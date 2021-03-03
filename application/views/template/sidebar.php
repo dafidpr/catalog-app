@@ -31,7 +31,10 @@
               <ul class="collapse list-unstyled pl-4 w-100" id="forms">
                 <li class="nav-item">
                   <a class="nav-link pl-3" href="<?= base_url('product') ?>">
-                    <i class="ml-1 item-text"></i> Product
+                    <i class="ml-1 item-text"></i> Data Product
+                  </a>
+                  <a class="nav-link pl-3" href="<?= base_url('merk') ?>">
+                    <i class="ml-1 item-text"></i> Data Merk
                   </a>
                 </li>
               </ul>
