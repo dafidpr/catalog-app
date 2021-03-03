@@ -139,7 +139,7 @@ class Setting_m extends CI_Model
     {
         try {
             if ($this->db->get_where($this->table, ['id' => $id])->row()->groups == 'image') {
-                unlink("assets/img/" . $this->db->get_where($this->table, ['id' => $id])->row()->meta_value);
+                unlink("assets/backend/img/" . $this->db->get_where($this->table, ['id' => $id])->row()->meta_value);
             }
             $this->db->where('id', $id);
             $this->db->delete($this->table);
@@ -160,7 +160,7 @@ class Setting_m extends CI_Model
 
     public function uploadImage($imageName)
     {
-        $config['upload_path']          = './assets/img/';
+        $config['upload_path']          = './assets/backend/img/';
         $config['allowed_types']        = 'jpg|png';
         $config['file_name']            = $imageName;
         $config['max_size']             = 2048;

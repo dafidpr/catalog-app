@@ -1,0 +1,108 @@
+/* 
+    Copyright 2020 | Web Media Solusi Digital
+
+    - Pre-loader
+    - Autocomplete
+    - Dashboard
+    - Card
+*/
+
+.disabled {
+    pointer-events: none!important;
+}
+
+.autocomplete-suggestions {
+    border: 1px solid #999;
+    background: #fff;
+    overflow: auto;
+}
+
+.autocomplete-suggestions strong {
+    color: #0486dd;
+}
+
+.autocomplete-selected {
+    background: #f0f0f0;
+    cursor: pointer;
+}
+
+.autocomplete-group, .autocomplete-suggestion {
+    padding: 10px 15px;
+}
+
+.autocomplete-group strong {
+    display: block;
+    border-bottom: 1px solid #000;
+}
+
+.dashboard .card {
+    overflow: hidden;
+    border-left: 2px solid #004cbe;
+}
+
+.dashboard .card .card-body-icon {
+    position: absolute;
+    top: 40%;
+    right: 20px;
+    transform: translate(0, -50%);
+    font-size: 40px;
+}
+
+.dashboard .card p {
+    padding: 0;
+    margin: 0;
+}
+
+.dashboard a {
+    text-decoration: none!important;
+    color: #7a7585;
+}
+
+.dashboard a:hover {
+    transition: .5s ease;
+}
+
+.dashboard .card:hover {
+    background: rgba(245, 245, 245, 1);
+    transition: .5s ease;
+}
+
+.pre-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 11111;
+}
+
+.pre-loader .loader-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    animation: blink 1.5s infinite;
+}
+
+.pre-loader.hide, .pre-loader.hide .loader-content {
+    transition: 1s ease;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.pre-loader .brand-sm {
+    width: 100%!important;
+}
+
+@keyframes blink {
+    0% {
+        opacity: .5;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacoty: .5;
+    }
+}

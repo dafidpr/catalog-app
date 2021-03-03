@@ -7,7 +7,7 @@
           <!-- nav bar -->
           <div class="w-100 mb-4 d-flex">
             <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="./index.html">
-              <img src="<?php echo base_url('assets/img/').getSettings('logo')?>" alt="" width="70%">
+              <img src="<?php echo base_url('assets/backend/img/').getSettings('logo')?>" alt="" width="70%">
             </a>
           </div>
           <ul class="navbar-nav flex-fill w-100 mb-2">
