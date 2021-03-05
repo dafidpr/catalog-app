@@ -4,62 +4,26 @@
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 <!--hero-slider-item-->
-                <div class="swiper-slide">
-                    <div class="hero-slider-item fl-wrap">
-                        <div class="bg-tabs-wrap">
-                            <div class="bg"  data-bg="<?= base_url('assets/frontend/') ?>images/bg/37.jpg"></div>
-                            <div class="overlay op7"></div>
-                        </div>
-                        <div class="container small-container">
-                            <div class="intro-item fl-wrap">
-                                <span class="section-separator"></span>
-                                <div class="bubbles">
-                                    <h1>Explore Best Places In City</h1>
+                <?php foreach($slider as $item){?>
+                    <div class="swiper-slide">
+                        <div class="hero-slider-item fl-wrap">
+                            <div class="bg-tabs-wrap">
+                                <div class="bg"  data-bg="<?= base_url('assets/backend/') ?>img/slider/<?=$item->image?>"></div>
+                                <div class="overlay op7"></div>
+                            </div>
+                            <div class="container small-container">
+                                <div class="intro-item fl-wrap">
+                                    <span class="section-separator"></span>
+                                    <div class="bubbles">
+                                        <h1><?=$item->title?></h1>
+                                    </div>
+                                    <h3><?=$item->subtitle?></h3>
                                 </div>
-                                <h3>Find some of the best tips from around the city from our partners and friends.</h3>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!--hero-slider-item end-->
-                <!--hero-slider-item-->
-                <div class="swiper-slide">
-                    <div class="hero-slider-item fl-wrap">
-                        <div class="bg-tabs-wrap">
-                            <div class="bg"  data-bg="<?= base_url('assets/frontend/') ?>images/bg/7.jpg"></div>
-                            <div class="overlay op7"></div>
-                        </div>
-                        <div class="container small-container">
-                            <div class="intro-item fl-wrap">
-                                <span class="section-separator"></span>
-                                <div class="bubbles">
-                                    <h1>Find Best Restaurants and Cafe</h1>
-                                </div>
-                                <h3>Find some of the best tips from around the city from our partners and friends.</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--hero-slider-item end-->                                    
-                <!--hero-slider-item-->
-                <div class="swiper-slide">
-                    <div class="hero-slider-item fl-wrap">
-                        <div class="bg-tabs-wrap">
-                            <div class="bg"  data-bg="<?= base_url('assets/frontend/') ?>images/bg/5.jpg"></div>
-                            <div class="overlay op7"></div>
-                        </div>
-                        <div class="container small-container">
-                            <div class="intro-item fl-wrap">
-                                <span class="section-separator"></span>
-                                <div class="bubbles">
-                                    <h1>Visit Events and  Clubs</h1>
-                                </div>
-                                <h3>Find some of the best tips from around the city from our partners and friends.</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--hero-slider-item end-->                                    
+                <?php }?>
+                <!--hero-slider-item end-->                                  
             </div>
         </div>
     </div>

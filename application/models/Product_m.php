@@ -65,15 +65,12 @@ class Product_m extends CI_Model {
     public function insert()
     {
         if (isset($_FILES['metaValue'])) {
-            $imageName = "img_" . rand(0, 9999999) . "_" . rand(0, 9999999) . '_' . rand(0, 9999999);
-            $this->uploadImage($imageName);
-
-            $meta_value = $imageName . "." . explode("/", $_FILES['metaValue']['type'])[1];
+            $imageName = $this->uploadImage();
         }
         $config = [
             'merk_id'  => $this->input->post('merk', true),
             'name'  => $this->input->post('name', true),
-            'thumbnail'  => $meta_value,
+            'thumbnail'  => $imageName,
             'police_number'  => $this->input->post('police_number', true),
             'type'  => $this->input->post('type', true),
             'year'  => $this->input->post('year', true),
@@ -110,19 +107,17 @@ class Product_m extends CI_Model {
     {
         $data = $this->db->get_where($this->table, ['id' => $id])->row();
         if ($_FILES['metaValue']['name'] != '') {
-            unlink("assets/backend/img/product/" . $data->meta_value);
-            $imageName = "img" . rand(0, 999999) . "_" . rand(0, 999999) . "_" . rand(0, 999999);
-            $this->uploadImage($imageName);
-
-            $meta_value = $imageName . "." . explode("/", $_FILES['metaValue']['type'])[1];
+            unlink("assets/backend/img/product/" . $data->thumbnail);
+            $imageName = $this->uploadImage();
+            
         } else {
-            $meta_value = $data->thumbnail;
+            $imageName = $data->thumbnail;
         }
 
          $config = [
             'merk_id'  => $this->input->post('merk', true),
             'name'  => $this->input->post('name', true),
-            'thumbnail'  => $meta_value,
+            'thumbnail'  => $imageName,
             'police_number'  => $this->input->post('police_number', true),
             'type'  => $this->input->post('type', true),
             'year'  => $this->input->post('year', true),
@@ -180,15 +175,17 @@ class Product_m extends CI_Model {
     }
 
     
-    public function uploadImage($imageName)
+    public function uploadImage()
     {
         $config['upload_path']          = './assets/backend/img/product/';
         $config['allowed_types']        = 'jpg|png|jpeg';
-        $config['file_name']            = $imageName;
+        // $config['file_name']            = $imageName;
         $config['max_size']             = 2048;
 
         $this->load->library('upload', $config);
-        $this->upload->do_upload('metaValue');
+        if($this->upload->do_upload('metaValue')){
+            return $this->upload->data("file_name");
+        }
     }
 
     public function angsuranAdd($id)
@@ -240,14 +237,11 @@ class Product_m extends CI_Model {
     public function pictureAdd($id)
     {
         if (isset($_FILES['metaValue'])) {
-            $imageName = "img_" . rand(0, 9999999) . "_" . rand(0, 9999999) . '_' . rand(0, 9999999);
-            $this->uploadImage($imageName);
-
-            $meta_value = $imageName . "." . explode("/", $_FILES['metaValue']['type'])[1];
+            $imageName = $this->uploadImage();
         }
         $config = [
             'product_id'  => $id,
-            'image'  => $meta_value,
+            'image'  => $imageName,
         ];
 
         try{

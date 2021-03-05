@@ -9,7 +9,8 @@ class Home extends MY_Controller
         $this->data = [
             'title' => 'Home',
             'content' => 'home/index',
-            'product' => $this->db->query("SELECT a.*, b.name AS merk_name FROM products a, merk b WHERE a.merk_id = b.id")->result()
+            'product' => $this->db->query("SELECT a.*, b.name AS merk_name FROM products a, merk b WHERE a.merk_id = b.id")->result(),
+            'slider' => $this->db->get('sliders')->result()
         ];
 
         $this->load->view('home/main', $this->data);
