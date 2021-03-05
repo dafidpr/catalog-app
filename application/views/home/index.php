@@ -79,56 +79,43 @@
         </div>
         <div class="grid-item-holder gallery-items fl-wrap">
             <!--  gallery-item-->
+            <?php foreach ($product as $val) {?>
             <div class="gallery-item restaurant events">
                 <!-- listing-item  -->
                 <div class="listing-item">
                     <article class="geodir-category-listing fl-wrap">
                         <div class="geodir-category-img">
-                            <a href="<?= base_url('home/detail')?>" class="geodir-category-img-wrap fl-wrap">
-                            <img src="<?= base_url('assets/backend/') ?>img/product/ayla1.jpg" alt=""> 
+                            <a href="<?= base_url('home/detail/').$val->id?>" class="geodir-category-img-wrap fl-wrap">
+                            <img src="<?= base_url('assets/backend/') ?>img/product/<?php echo $val->thumbnail?>" alt=""> 
                             </a>
-                            <div class="geodir_status_date gsd_open"><i class="fal fa-lock-open"></i>Available</div>
+                            <?php if ($val->sold == 'Y'){?>
+                                <div class="geodir_status_date gsd_open" style="background:red"><i class="fal fa-lock"></i>Soldout</div>
+                            <?php } else {?>
+                                <div class="geodir_status_date gsd_open"><i class="fal fa-lock-open"></i>Available</div>
+                            <?php } ?>
                         </div>
                         <div class="geodir-category-content fl-wrap title-sin_item">
                             <div class="geodir-category-content-title fl-wrap">
                                 <div class="geodir-category-content-title-item">
-                                    <h3 class="title-sin_map"><a href="<?= base_url('home/detail')?>">AYLA X MATIC 2016</a><span class="verified-badge"><i class="fal fa-check"></i></span></h3>
-                                    <div class="geodir-category-location fl-wrap"><a href="#" ><i class="fas fa-map-marker-alt"></i> Banyuwangi</a></div>
+                                    <h3 class="title-sin_map"><a href="<?= base_url('home/detail/').$val->id?>"><?= $val->name . ' '. $val->year?></a></h3>
+                                    <div class="geodir-category-location fl-wrap"><a href="#" ><i class="fas fa-car"></i> <?=$val->merk_name?></a></div>
                                 </div>
                             </div>
                             <div class="geodir-category-text fl-wrap">
-                                <p class="small-text">Sed interdum metus at nisi tempor laoreet. Integer gravida orci a justo sodales.</p>
+                                <p class="small-text"><?= substr($val->description, 0, 100) ?>...</p>
                             </div>
                             <div class="geodir-category-footer fl-wrap">
                                 <a class="listing-item-category-wrap">
                                     <div class="listing-item-category red-bg">Rp</div>
-                                    <span>Rp. 90.000.000</span>
+                                    <span>Rp. <?= number_format($val->price, 0, ',', '.') ?></span>
                                 </a>
-                                <div class="geodir-opt-list">
-                                    <ul class="no-list-style">
-                                        <li><a href="#" class="show_gcc"><i class="fal fa-envelope"></i><span class="geodir-opt-tooltip">Contact Info</span></a></li>
-                                        <li>
-                                            <div class="dynamic-gal gdop-list-link" data-dynamicPath="[{'src': '<?= base_url('assets/frontend/') ?>images/all/1.jpg'},{'src': '<?= base_url('assets/frontend/') ?>images/all/24.jpg'}, {'src': '<?= base_url('assets/frontend/') ?>images/all/12.jpg'}]"><i class="fal fa-search-plus"></i><span class="geodir-opt-tooltip">Gallery</span></div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="price-level geodir-category_price">
-                                    <span class="price-level-item" data-pricerating="3"></span>
-                                    <span class="price-name-tooltip">Pricey</span>
-                                </div>
-                                <div class="geodir-category_contacts">
-                                    <div class="close_gcc"><i class="fal fa-times-circle"></i></div>
-                                    <ul class="no-list-style">
-                                        <li><span><i class="fal fa-phone"></i> Call : </span><a href="#">+38099231212</a></li>
-                                        <li><span><i class="fal fa-envelope"></i> Write : </span><a href="#">yourmail@domain.com</a></li>
-                                    </ul>
-                                </div>
                             </div>
                         </div>
                     </article>
                 </div>
                 <!-- listing-item end -->                              
             </div>
+            <?php }?>
             <!-- gallery-item  end-->                             
         </div>
     </div>

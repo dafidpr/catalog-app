@@ -54,7 +54,7 @@ class Settings extends MY_Controller
         $this->data = [
             'title'  => 'Add Settings',
             'mod'    => 'mod_setting',
-            'action' => 'setting/create',
+            'action' => 'settings/create',
         ];
 
         $this->render('setting/form');

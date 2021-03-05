@@ -1,6 +1,6 @@
 <div class="card mb-3 shadow">
     <div class="card-header">
-        <a href="<?= base_url(); ?>school_profile/add" class="btn btn-primary"><i class="fe fe-plus"></i> Add Data</a>
+        <a href="<?= base_url(); ?>settings/add" class="btn btn-primary"><i class="fe fe-plus"></i> Add Data</a>
     </div>
     <div class="card-body">
         <?php if (isset($this->session->message)) : ?>

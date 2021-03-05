@@ -8,17 +8,19 @@ class Home extends MY_Controller
     {
         $this->data = [
             'title' => 'Home',
-            'content' => 'home/index'
+            'content' => 'home/index',
+            'product' => $this->db->query("SELECT a.*, b.name AS merk_name FROM products a, merk b WHERE a.merk_id = b.id")->result()
         ];
 
         $this->load->view('home/main', $this->data);
     }
 
-    public function detail()
+    public function detail($id)
     {
         $this->data = [
             'title' => 'Detail',
-            'content' => 'home/detail'
+            'content' => 'home/detail',
+            'product' => $this->db->query("SELECT a.*, b.name AS merk_name FROM products a, merk b WHERE a.merk_id = b.id AND a.id = '$id'")->row()
         ];
 
         $this->load->view('home/main', $this->data);

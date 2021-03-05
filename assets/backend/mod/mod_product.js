@@ -51,7 +51,7 @@ var dataColumns = [
         orderable: false,
         searchable: false,
         render: function(data){
-            return '<i class="fe fe-edit px-2 text-primary action" style="cursor: pointer;" data-toggle="edit" data-url="product/edit/'+ data +'"></i> <i class="fe fe-trash-2 px-2 action text-danger" style="cursor: pointer;" data-toggle="delete" data-url="product/destroy/'+data+'"></i>';
+            return '<a href="product/picture/'+ data +'" class="text-decoration-none"><i class="fe fe-camera px-2 text-success"></i></a><i class="fe fe-edit px-2 text-primary action" style="cursor: pointer;" data-toggle="edit" data-url="product/edit/'+ data +'"></i> <i class="fe fe-trash-2 px-2 action text-danger" style="cursor: pointer;" data-toggle="delete" data-url="product/destroy/'+data+'"></i>';
         }
     }
 ];
