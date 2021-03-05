@@ -51,7 +51,7 @@ var dataColumns = [
         orderable: false,
         searchable: false,
         render: function(data){
-            return '<a href="product/picture/'+ data +'" class="text-decoration-none"><i class="fe fe-camera px-2 text-success"></i></a><i class="fe fe-edit px-2 text-primary action" style="cursor: pointer;" data-toggle="edit" data-url="product/edit/'+ data +'"></i> <i class="fe fe-trash-2 px-2 action text-danger" style="cursor: pointer;" data-toggle="delete" data-url="product/destroy/'+data+'"></i>';
+            return '<a href="product/angsuran/'+ data +'" class="text-decoration-none"><i class="fe fe-credit-card px-1 text-muted"></i></a><a href="product/picture/'+ data +'" class="text-decoration-none"><i class="fe fe-camera px-2 text-success"></i></a><i class="fe fe-edit px-1 text-primary action" style="cursor: pointer;" data-toggle="edit" data-url="product/edit/'+ data +'"></i> <i class="fe fe-trash-2 px-1 action text-danger" style="cursor: pointer;" data-toggle="delete" data-url="product/destroy/'+data+'"></i>';
         }
     }
 ];
@@ -113,6 +113,14 @@ var displayErrors = [
         display: '#soldErr',
         inputName: 'sold'
     },
+    {
+        display: '#angsuranErr',
+        inputName: 'angsuran'
+    },
+    {
+        display: '#nominalErr',
+        inputName: 'nominal'
+    },
 ];
 $('.imgChange').change(function(){
 	imgPreview(this);
@@ -127,4 +135,42 @@ function imgPreview(input){
 		}
 		reader.readAsDataURL(input.files[0]);
 	}
+}
+
+function deleteAngs(id){
+    Swal.fire({
+        title: "Delete?",
+        icon: "question",
+        text: "Do you delete item?",
+        showConfirmButton: true,
+        confirmButtonText: "Yes, delete it",
+        confirmButtonClass: "bg-danger",
+        showCancelButton: true,
+        cancelButtonText: "No",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: base_url + 'product/angsuran_delete/'+id,
+                dataType: "json",
+                success: function (data) {
+                    if (data.status == 400) {
+                        Swal.fire({
+                            title: "Failed",
+                            icon: "error",
+                            text: data.message,
+                        });
+                    } else {
+                        window.location.reload();
+                    }
+                },
+                error: function (xhr, ajaxOptioins, thrownError) {
+                    Swal.fire({
+                        title: xhr.status,
+                        icon: "warning",
+                        text: thrownError,
+                    });
+                },
+            });
+        }
+    });
 }

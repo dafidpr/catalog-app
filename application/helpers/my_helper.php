@@ -37,3 +37,18 @@ if (!function_exists('getSettings')) {
         }
     }
 }
+
+if ( ! function_exists('redirectRefresh'))
+{
+    function redirectRefresh($uri = '', $method = 'location', $wait_time = 0, $http_response_code = 302)
+    {
+        switch($method)
+        {
+            case 'refresh' : header("Refresh:".$wait_time.";url=".site_url($uri));
+            break;
+            default : header("Location: ".site_url($uri), TRUE, $http_response_code);
+            break;
+        }
+        exit;
+    }
+}

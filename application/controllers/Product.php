@@ -292,4 +292,59 @@ class Product extends MY_Controller {
         echo $proses;
     }
 
+    public function angsuran($id)
+    {
+        $sql = "SELECT c.id, a.name, a.police_number, b.name AS angsuran, b.periode, c.nominal FROM products a, installments b, installment_details c 
+        WHERE a.id = c.product_id AND b.id = c.installment_id AND a.id = '$id'";
+        $this->data = [
+            'title'  => 'Angsuran Kendaraan',
+            'mod'    => 'mod_product',
+            'action' => 'product/angsuran_add/'.$id,
+            'redirect'=> 'product/angsuran/'.$id,
+            'angsuran' => $this->db->get('installments')->result(),
+            'collection' => $this->db->query($sql)->result()
+        ];
+        
+        $this->render('product/angsuran');
+    }
+
+    public function angsuran_add($id)
+    {
+        $config = [
+            [
+                'field' => 'angsuran',
+                'label' => 'Angsuran',
+                'rules' => 'required'
+            ],
+            [
+                'field' => 'nominal',
+                'label' => 'Nominal',
+                'rules' => 'required'
+            ]
+        ];
+        $this->form_validation->set_rules($config);
+
+        if($this->form_validation->run() == false){
+            $error = [
+                'angsuran' => form_error('angsuran'),
+                'nominal' => form_error('nominal'),
+                'status'          => 400
+            ];
+
+            echo json_encode($error);
+        } else {
+            $proses = $this->Product_m->angsuranAdd($id);
+
+            echo $proses;
+        }
+    }
+    
+    public function angsuran_delete($id)
+    {
+        $proses = $this->Product_m->ansguranDel($id);
+
+        echo $proses;
+        
+    }
+
 }

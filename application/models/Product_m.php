@@ -193,4 +193,49 @@ class Product_m extends CI_Model {
         $this->upload->do_upload('metaValue');
     }
 
+    public function angsuranAdd($id)
+    {
+        $config = [
+            'product_id'  => $id,
+            'installment_id'  => $this->input->post('angsuran', true),
+            'nominal'  => $this->input->post('nominal', true),
+        ];
+
+        try{
+            $this->db->insert('installment_details', $config);
+
+            $data = [
+                'status' => 200,
+                'message'  => 'Data has been added'
+            ];
+        } catch(Exception $e){
+            $data = [
+                'status'  => 500,
+                'message' => $e->getMessage()
+            ];
+        }
+
+        return json_encode($data);
+    }
+
+    public function ansguranDel($id)
+    {
+        try {
+            $this->db->where('id', $id);
+            $this->db->delete('installment_details');
+            $this->session->set_flashdata('message', 'Data has been deleted');
+
+            $data = [
+                'status'  => 200,
+                'message' => 'Data has been deleted'
+            ];
+        } catch(Exception $e){
+            $data = [
+                'status'  => 400,
+                'message' => $e->getMessage()
+            ];
+        }
+
+        return json_encode($data);
+    }
 }
