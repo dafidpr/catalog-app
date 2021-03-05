@@ -347,4 +347,30 @@ class Product extends MY_Controller {
         
     }
 
+    public function picture($id)
+    {
+        $this->data = [
+            'title'  => 'Gambar Produk',
+            'mod'    => 'mod_product',
+            'action' => 'product/picture_add/'.$id,
+            'redirect' => 'product/picture/'.$id,
+            'collection'=> $this->db->get_where('product_images', ['product_id' => $id])->result()
+        ];
+        
+        $this->render('product/picture');
+    }
+    public function picture_add($id)
+    {
+        $proses = $this->Product_m->pictureAdd($id);
+
+        echo $proses;
+    }
+    public function picture_delete($id)
+    {
+        $proses = $this->Product_m->pictureDel($id);
+
+        echo $proses;
+        
+    }
+
 }

@@ -10,15 +10,15 @@ class MY_Controller extends CI_Controller
         parent::__construct();
         $this->load->library('form_validation');
         $this->load->helper("my");
-        if (!loginStatus()) {
-            redirect('login');
-        }
 
         $this->form_validation->set_error_delimiters('', '');
     }
 
     public function render($render)
     {
+        if (!loginStatus()) {
+            redirect('login');
+        }
         //load header
         $this->load->view('template/header', $this->data);
 

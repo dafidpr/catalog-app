@@ -25,9 +25,9 @@
                             <div class="single-slider fl-wrap">
                                 <div class="swiper-container">
                                     <div class="swiper-wrapper lightgallery">
-                                        <div class="swiper-slide hov_zoom"><img src="<?= base_url('assets/frontend/')?>images/all/50.jpg" alt=""><a href="<?= base_url('assets/frontend/')?>images/all/5.jpg" class="box-media-zoom   popup-image"><i class="fal fa-search"></i></a></div>
-                                        <div class="swiper-slide hov_zoom"><img src="<?= base_url('assets/frontend/')?>images/all/51.jpg" alt=""><a href="<?= base_url('assets/frontend/')?>images/all/1.jpg" class="box-media-zoom   popup-image"><i class="fal fa-search"></i></a></div>
-                                        <div class="swiper-slide hov_zoom"><img src="<?= base_url('assets/frontend/')?>images/all/49.jpg" alt=""><a href="<?= base_url('assets/frontend/')?>images/all/3.jpg" class="box-media-zoom   popup-image"><i class="fal fa-search"></i></a></div>
+                                        <?php foreach($image as $img){?>
+                                            <div class="swiper-slide hov_zoom"><img src="<?= base_url('assets/backend/')?>img/product/<?=$img->image?>" alt=""><a href="<?= base_url('assets/backend/')?>img/product/<?=$img->image?>" class="box-media-zoom   popup-image"><i class="fal fa-search"></i></a></div>
+                                        <?php }?>
                                     </div>
                                 </div>
                             </div>

@@ -69,8 +69,6 @@ class Product_m extends CI_Model {
             $this->uploadImage($imageName);
 
             $meta_value = $imageName . "." . explode("/", $_FILES['metaValue']['type'])[1];
-        } else {
-            $meta_value = $this->input->post('metaValue', true);
         }
         $config = [
             'merk_id'  => $this->input->post('merk', true),
@@ -230,6 +228,59 @@ class Product_m extends CI_Model {
                 'message' => 'Data has been deleted'
             ];
         } catch(Exception $e){
+            $data = [
+                'status'  => 400,
+                'message' => $e->getMessage()
+            ];
+        }
+
+        return json_encode($data);
+    }
+
+    public function pictureAdd($id)
+    {
+        if (isset($_FILES['metaValue'])) {
+            $imageName = "img_" . rand(0, 9999999) . "_" . rand(0, 9999999) . '_' . rand(0, 9999999);
+            $this->uploadImage($imageName);
+
+            $meta_value = $imageName . "." . explode("/", $_FILES['metaValue']['type'])[1];
+        }
+        $config = [
+            'product_id'  => $id,
+            'image'  => $meta_value,
+        ];
+
+        try{
+            $this->db->insert('product_images', $config);
+
+            $data = [
+                'status' => 200,
+                'message'  => 'Data has been added'
+            ];
+        } catch(Exception $e){
+            $data = [
+                'status'  => 500,
+                'message' => $e->getMessage()
+            ];
+        }
+
+        return json_encode($data);
+    }
+
+    public function pictureDel($id)
+    {
+        try {
+            if ($this->db->get_where('product_images', ['id' => $id])->row()) {
+                unlink("assets/backend/img/product/" . $this->db->get_where('product_images', ['id' => $id])->row()->image);
+            }
+            $this->db->where('id', $id);
+            $this->db->delete('product_images');
+
+            $data = [
+                'status'  => 200,
+                'message' => 'Data has been deleted'
+            ];
+        } catch (Exception $e) {
             $data = [
                 'status'  => 400,
                 'message' => $e->getMessage()

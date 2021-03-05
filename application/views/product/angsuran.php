@@ -33,7 +33,7 @@
                         <td>x <?=$val->periode?> Bulan</td>
                         <td>Rp. <?= number_format($val->nominal, 0, ',', '.')?></td>
                         <td>
-                            <a href="#" onclick="deleteAngs('<?=$val->id?>')" class="text-decoration-none"><i class="fe fe-trash-2 text-danger"></i></a>
+                            <a href="#" onclick="deleteProduct('product/angsuran_delete/', '<?=$val->id?>')" class="text-decoration-none"><i class="fe fe-trash-2 text-danger"></i></a>
                         </td>
                     </tr>
                     <?php } ?>

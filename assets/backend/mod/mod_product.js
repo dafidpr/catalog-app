@@ -137,7 +137,7 @@ function imgPreview(input){
 	}
 }
 
-function deleteAngs(id){
+function deleteProduct(delUrl, id){
     Swal.fire({
         title: "Delete?",
         icon: "question",
@@ -150,7 +150,7 @@ function deleteAngs(id){
     }).then((result) => {
         if (result.isConfirmed) {
             $.ajax({
-                url: base_url + 'product/angsuran_delete/'+id,
+                url: base_url + delUrl + id,
                 dataType: "json",
                 success: function (data) {
                     if (data.status == 400) {

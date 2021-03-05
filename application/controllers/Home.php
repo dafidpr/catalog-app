@@ -23,7 +23,8 @@ class Home extends MY_Controller
             'title' => 'Detail',
             'content' => 'home/detail',
             'product' => $this->db->query($productSQL)->row(),
-            'angsuran' => $this->db->query($angsuranSQL)->result()
+            'angsuran' => $this->db->query($angsuranSQL)->result(),
+            'image' => $this->db->get_where('product_images', ['product_id' => $id])->result()
         ];
 
         $this->load->view('home/main', $this->data);
