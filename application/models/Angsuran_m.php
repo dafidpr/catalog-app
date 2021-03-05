@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Merk_m extends CI_Model {
+class Angsuran_m extends CI_Model {
 
-    protected $table = 'merk';
-    protected $column_orders = [null, 'name', null];
-    protected $column_search = ['name'];
+    protected $table = 'installments';
+    protected $column_orders = [null, 'name', 'periode', null];
+    protected $column_search = ['name', 'periode'];
     protected $order = ['id' => 'asc'];
 
     public function get_query()
@@ -62,8 +62,8 @@ class Merk_m extends CI_Model {
     public function insert()
     {
         $config = [
-            'id'        => '',
-            'name'  => $this->input->post('name', true)
+            'name'  => $this->input->post('name', true),
+            'periode'  => $this->input->post('periode', true)
         ];
 
         try{
@@ -87,6 +87,7 @@ class Merk_m extends CI_Model {
     {
         $config = [
             'name'      => $this->input->post('name', true),
+            'periode'      => $this->input->post('periode', true),
         ];
 
         try{
@@ -109,9 +110,10 @@ class Merk_m extends CI_Model {
 
     public function destroy($id)
     {
+        
         try {
             $this->db->where('id', $id);
-            $this->db->delete($this->table, ['id' => $id]);
+            $this->db->delete($this->table);
             $this->session->set_flashdata('message', 'Data has been deleted');
 
             $data = [
@@ -124,7 +126,6 @@ class Merk_m extends CI_Model {
                 'message' => $e->getMessage()
             ];
         }
-
         return json_encode($data);
     }
 

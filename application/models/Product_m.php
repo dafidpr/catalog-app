@@ -160,29 +160,22 @@ class Product_m extends CI_Model {
 
     public function destroy($id)
     {
-        if($id == $this->session->user_id){
+        try {
+            if ($this->db->get_where($this->table, ['id' => $id])->row()) {
+                unlink("assets/backend/img/product/" . $this->db->get_where($this->table, ['id' => $id])->row()->thumbnail);
+            }
+            $this->db->where('id', $id);
+            $this->db->delete($this->table);
+
+            $data = [
+                'status'  => 200,
+                'message' => 'Data has been deleted'
+            ];
+        } catch (Exception $e) {
             $data = [
                 'status'  => 400,
-                'message' => 'Access denied'
+                'message' => $e->getMessage()
             ];
-        } else {
-            try {
-                if ($this->db->get_where($this->table, ['id' => $id])->row()) {
-                    unlink("assets/backend/img/product/" . $this->db->get_where($this->table, ['id' => $id])->row()->thumbnail);
-                }
-                $this->db->where('id', $id);
-                $this->db->delete($this->table);
-    
-                $data = [
-                    'status'  => 200,
-                    'message' => 'Data has been deleted'
-                ];
-            } catch (Exception $e) {
-                $data = [
-                    'status'  => 400,
-                    'message' => $e->getMessage()
-                ];
-            }
         }
 
         return json_encode($data);

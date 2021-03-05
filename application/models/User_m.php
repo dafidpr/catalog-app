@@ -209,27 +209,20 @@ class User_m extends CI_Model {
 
     public function destroy($id)
     {
-        if($id == $this->session->user_id){
+        try {
+            $this->db->where('id', $id);
+            $this->db->update($this->table, ['is_deleted' => 1]);
+            $this->session->set_flashdata('message', 'Data has been deleted');
+
+            $data = [
+                'status'  => 200,
+                'message' => 'Data has been deleted'
+            ];
+        } catch(Exception $e){
             $data = [
                 'status'  => 400,
-                'message' => 'Access denied'
+                'message' => $e->getMessage()
             ];
-        } else {
-            try {
-                $this->db->where('id', $id);
-                $this->db->update($this->table, ['is_deleted' => 1]);
-                $this->session->set_flashdata('message', 'Data has been deleted');
-    
-                $data = [
-                    'status'  => 200,
-                    'message' => 'Data has been deleted'
-                ];
-            } catch(Exception $e){
-                $data = [
-                    'status'  => 400,
-                    'message' => $e->getMessage()
-                ];
-            }
         }
 
         return json_encode($data);

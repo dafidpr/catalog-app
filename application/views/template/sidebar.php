@@ -36,6 +36,9 @@
                   <a class="nav-link pl-3" href="<?= base_url('merk') ?>">
                     <i class="ml-1 item-text"></i> Data Merk
                   </a>
+                  <a class="nav-link pl-3" href="<?= base_url('angsuran') ?>">
+                    <i class="ml-1 item-text"></i> Data Angsuran
+                  </a>
                 </li>
               </ul>
             </li>
