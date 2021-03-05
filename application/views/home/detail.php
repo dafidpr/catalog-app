@@ -93,8 +93,9 @@
                             <ul class="no-list-style">
                                 <li class="mon"><span class="opening-hours-day">Harga </span><span class="opening-hours-time">Rp. <?= number_format($product->price, 0, ',','.') ?></span></li>
                                 <li class="tue"><span class="opening-hours-day">DP Minim </span><span class="opening-hours-time">Rp. <?= number_format($product->minimal_dp, 0, ',','.') ?></span></li>
-                                <li class="tue"><span class="opening-hours-day">Angsuran </span><span class="opening-hours-time">9 AM - 5 PM</span></li>
-                                <li class="tue"><span class="opening-hours-day">Angsuran </span><span class="opening-hours-time">9 AM - 5 PM</span></li>
+                                <?php foreach($angsuran as $item){?>
+                                    <li class="tue"><span class="opening-hours-day"><?=$item->angsuran. ' x '.$item->periode.' bln'?> </span><span class="opening-hours-time">Rp. <?=number_format($item->nominal, 0,',','.')?></span></li>
+                                <?php }?>
                             </ul>
                         </div>
                     </div>
