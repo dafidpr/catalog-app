@@ -44,6 +44,7 @@
   <script src='<?= base_url(); ?>assets/backend/js/responsive.bootstrap4.min.js'></script>
   <script src="<?= base_url(); ?>assets/backend/js/sweetalert2.all.min.js"></script>
   <script src="<?= base_url(); ?>assets/backend/js/duDatepicker.min.js"></script>
+  <script src="<?php echo base_url('assets/backend/plugins/summernote/summernote-bs4.js');?>"></script>
   <?php if (isset($mod)) : ?>
     <script src="<?= base_url(); ?>assets/backend/mod/<?= $mod; ?>.js"></script>
   <?php endif; ?>
@@ -62,6 +63,22 @@
         showDropdowns: true,
         autoclose: true
       });
+    })
+  </script>
+  <script>
+    $(function(){
+      $('.summernote').summernote({
+				height: 200,
+				toolbar: [
+					['style', ['style']],
+					['font', ['bold', 'underline', 'clear']],
+					['fontname', ['fontname']],
+					['color', ['color']],
+					['para', ['ul', 'ol', 'paragraph']],
+					['table', ['table']],
+					['view', ['fullscreen', 'codeview', 'help']],
+				]
+			});
     })
   </script>
 </body>
