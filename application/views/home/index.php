@@ -4,26 +4,26 @@
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 <!--hero-slider-item-->
-                <?php foreach($slider as $item){?>
+                <?php foreach ($slider as $item) { ?>
                     <div class="swiper-slide">
                         <div class="hero-slider-item fl-wrap">
                             <div class="bg-tabs-wrap">
-                                <div class="bg"  data-bg="<?= base_url('assets/backend/') ?>img/slider/<?=$item->image?>"></div>
+                                <div class="bg" data-bg="<?= base_url('assets/backend/') ?>img/slider/<?= $item->image ?>"></div>
                                 <div class="overlay op7"></div>
                             </div>
                             <div class="container small-container">
                                 <div class="intro-item fl-wrap">
                                     <span class="section-separator"></span>
                                     <div class="bubbles">
-                                        <h1><?=$item->title?></h1>
+                                        <h1><?= $item->title ?></h1>
                                     </div>
-                                    <h3><?=$item->subtitle?></h3>
+                                    <h3><?= $item->subtitle ?></h3>
                                 </div>
                             </div>
                         </div>
                     </div>
-                <?php }?>
-                <!--hero-slider-item end-->                                  
+                <?php } ?>
+                <!--hero-slider-item end-->
             </div>
         </div>
     </div>
@@ -43,45 +43,45 @@
         </div>
         <div class="grid-item-holder gallery-items fl-wrap">
             <!--  gallery-item-->
-            <?php foreach ($product as $val) {?>
-            <div class="gallery-item restaurant events">
-                <!-- listing-item  -->
-                <div class="listing-item">
-                    <article class="geodir-category-listing fl-wrap">
-                        <div class="geodir-category-img">
-                            <a href="<?= base_url('home/detail/').$val->id?>" class="geodir-category-img-wrap fl-wrap">
-                            <img src="<?= base_url('assets/backend/') ?>img/product/<?php echo $val->thumbnail?>" alt=""> 
-                            </a>
-                            <?php if ($val->sold == 'Y'){?>
-                                <div class="geodir_status_date gsd_open" style="background:red"><i class="fal fa-lock"></i>Soldout</div>
-                            <?php } else {?>
-                                <div class="geodir_status_date gsd_open"><i class="fal fa-lock-open"></i>Available</div>
-                            <?php } ?>
-                        </div>
-                        <div class="geodir-category-content fl-wrap title-sin_item">
-                            <div class="geodir-category-content-title fl-wrap">
-                                <div class="geodir-category-content-title-item">
-                                    <h3 class="title-sin_map"><a href="<?= base_url('home/detail/').$val->id?>"><?= $val->name . ' '. $val->year?></a></h3>
-                                    <div class="geodir-category-location fl-wrap"><a href="#" ><i class="fas fa-car"></i> <?=$val->merk_name?></a></div>
+            <?php foreach ($product as $val) { ?>
+                <div class="gallery-item restaurant events">
+                    <!-- listing-item  -->
+                    <div class="listing-item">
+                        <article class="geodir-category-listing fl-wrap">
+                            <div class="geodir-category-img">
+                                <a href="<?= base_url('home/detail/') . $val->id ?>" class="geodir-category-img-wrap fl-wrap">
+                                    <img src="<?= base_url('assets/backend/') ?>img/product/<?php echo $val->thumbnail ?>" alt="">
+                                </a>
+                                <?php if ($val->sold == 'Y') { ?>
+                                    <div class="geodir_status_date gsd_open" style="background:red"><i class="fal fa-lock"></i>Soldout</div>
+                                <?php } else { ?>
+                                    <div class="geodir_status_date gsd_open"><i class="fal fa-lock-open"></i>Available</div>
+                                <?php } ?>
+                            </div>
+                            <div class="geodir-category-content fl-wrap title-sin_item">
+                                <div class="geodir-category-content-title fl-wrap">
+                                    <div class="geodir-category-content-title-item">
+                                        <h3 class="title-sin_map"><a href="<?= base_url('home/detail/') . $val->id ?>"><?= $val->name . ' ' . $val->year ?></a></h3>
+                                        <div class="geodir-category-location fl-wrap"><a href="#"><i class="fas fa-car"></i> <?= $val->merk_name ?></a></div>
+                                    </div>
+                                </div>
+                                <div class="geodir-category-text fl-wrap">
+                                    <p class="small-text"><?= strlen($val->description) >= 100 ? substr($val->description, 0, 100) . '...' : $val->description ?></p>
+                                </div>
+                                <div class="geodir-category-footer fl-wrap">
+                                    <a class="listing-item-category-wrap">
+                                        <div class="listing-item-category red-bg">Rp</div>
+                                        <span>Rp. <?= number_format($val->price, 0, ',', '.') ?></span>
+                                    </a>
                                 </div>
                             </div>
-                            <div class="geodir-category-text fl-wrap">
-                                <p class="small-text"><?= substr($val->description, 0, 100) ?>...</p>
-                            </div>
-                            <div class="geodir-category-footer fl-wrap">
-                                <a class="listing-item-category-wrap">
-                                    <div class="listing-item-category red-bg">Rp</div>
-                                    <span>Rp. <?= number_format($val->price, 0, ',', '.') ?></span>
-                                </a>
-                            </div>
-                        </div>
-                    </article>
+                        </article>
+                    </div>
+                    <!-- listing-item end -->
                 </div>
-                <!-- listing-item end -->                              
-            </div>
-            <?php }?>
-            <!-- gallery-item  end-->                             
+            <?php } ?>
+            <!-- gallery-item  end-->
         </div>
     </div>
 </section>
-<!--section end--> 
+<!--section end-->

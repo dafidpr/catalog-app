@@ -17,7 +17,7 @@
                             <textarea class="form-control" name="metaValue" id="metaValue" placeholder="Meta Value"><?= isset($item->meta_value) ? $item->meta_value : ''; ?></textarea>
                         <?php elseif ($item->groups == 'image') : ?>
                             <div class="card border-0">
-                                <img src="<?= base_url(); ?>assets/img/<?= $item->meta_value; ?>" class="figure-img img-fluid rounded imgPreview" width="200" style="object-fit: cover;">
+                                <img src="<?= base_url(); ?>assets/backend/img/<?= $item->meta_value; ?>" class="figure-img img-fluid rounded imgPreview" width="200" style="object-fit: cover;">
                             </div>
                             <input type="file" class="form-control-file mt-3 imgChange" name="metaValue" id="metaValue">
                         <?php endif; ?>

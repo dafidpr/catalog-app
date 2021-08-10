@@ -99,7 +99,7 @@ class Setting_m extends CI_Model
         $data = $this->db->get_where($this->table, ['id' => $id])->row();
         if ($data->groups == 'image') {
             if ($_FILES['metaValue']['name'] != '') {
-                unlink("assets/img/" . $data->meta_value);
+                unlink("assets/backend/img/" . $data->meta_value);
                 $imageName = "img" . rand(0, 999999) . "_" . rand(0, 999999) . "_" . rand(0, 999999);
                 $this->uploadImage($imageName);
 
