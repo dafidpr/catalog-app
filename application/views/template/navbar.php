@@ -15,10 +15,10 @@
                 </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="<?=base_url();?>user/changePassword/<?=$this->session->user_id;?>">Change Password</a>
-                <a class="dropdown-item" href="<?=base_url();?>school_profile">Settings</a>
+                <a class="dropdown-item" href="<?= base_url(); ?>user/changePassword/<?= $this->session->user_id; ?>">Change Password</a>
+                <a class="dropdown-item" href="<?= base_url(); ?>settings">Settings</a>
                 <div class="dropdown-divider"></div>
-                <a href="<?=base_url();?>logout" class="dropdown-item" id="logout">Logout</a>
+                <a href="<?= base_url(); ?>logout" class="dropdown-item" id="logout">Logout</a>
             </div>
         </li>
     </ul>
