@@ -6,13 +6,13 @@
         <nav class="vertnav navbar navbar-light">
           <!-- nav bar -->
           <div class="w-100 mb-4 d-flex">
-            <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="./index.html">
-              <img src="<?php echo base_url('assets/backend/img/').getSettings('logo')?>" alt="" width="70%">
+            <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="#">
+              <img src="<?php echo base_url('assets/backend/img/') . getSettings('logo') ?>" alt="" width="70%">
             </a>
           </div>
           <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item">
-              <a href="<?= base_url(); ?>" class="nav-link">
+              <a href="<?= base_url('dashboard'); ?>" class="nav-link">
                 <i class="fe fe-home fe-16"></i>
                 <span class="ml-3 item-text">Dashboard</span><span class="sr-only">(current)</span>
               </a>
